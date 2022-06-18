@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from party.models import Client, Party
-from .models import NonDisclosure, Contract, Addendum
+from .models import NonDisclosure, Contract, Addendum, Appointee, BoardResolution
 
 
 class NonDisclosureAdmin(admin.ModelAdmin):
@@ -51,3 +51,21 @@ class AddendumAdmin(admin.ModelAdmin):
     )
 
 admin.site.register(Addendum, AddendumAdmin)
+
+
+class AppointeeAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+    )
+
+admin.site.register(Appointee, AppointeeAdmin)
+
+class BoardResolutionAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'date',
+        'resolution'
+
+    )
+
+admin.site.register(BoardResolution, BoardResolutionAdmin)

@@ -79,7 +79,32 @@ class Addendum(models.Model):
         verbose_name = "Addendum"
         verbose_name_plural = "Addenda"
 
+class Appointee(models.Model):
+    name = models.CharField(max_length=255 , null=False, blank=False)
+
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Appointee"
+        verbose_name_plural = "Appointees"
+
+
 
 class BoardResolution(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
+    appointees = models.ManyToManyField(Appointee)
+    date = models.DateField(auto_now_add=False, blank=True, null=True)
+    resolution = models.FileField(max_length=255, blank=False, null=False)
+
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Board Resolution"
+
+
+
     
